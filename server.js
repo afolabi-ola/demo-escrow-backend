@@ -28,7 +28,55 @@ if (process.env.NODE_ENV !== "production") {
   });
 }
 const PORT = process.env.PORT || 3000;
+
+const uri = process.env.MONGODB_URI;
+
+console.log('MongoDB diagnostics:', {
+  exists: Boolean(uri),
+  startsCorrectly: uri?.startsWith('mongodb+srv://'),
+  containsEscrow: uri?.includes('/escrow'),
+  containsWhitespace: /\s/.test(uri || ''),
+  length: uri?.length,
+  databasePart: uri?.split('@')[1]?.split('?')[0],
+});
+
+try {
+  const parsed = new URL(uri);
+
+  console.log('MongoDB URI parsing:', {
+    protocol: parsed.protocol,
+    hostname: parsed.hostname,
+    pathname: parsed.pathname,
+    search: parsed.search,
+    usernameLength: decodeURIComponent(parsed.username).length,
+    passwordLength: decodeURIComponent(parsed.password).length,
+  });
+} catch (error) {
+  console.error('URI parsing failed:', error.message);
+}
+
+console.log('Production diagnostics:', {
+  nodeEnv: process.env.NODE_ENV,
+  uriLength: uri?.length,
+  startsCorrectly: uri?.startsWith('mongodb+srv://'),
+  hasEscrow: uri?.includes('/escrow'),
+  hasNewline: /[\r\n]/.test(uri || ''),
+  hasWhitespace: /\s/.test(uri || ''),
+});
+
+mongoose
+  .connect(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log('MongoDB connected');
+  })
+  .catch((err) => {
+    console.error('MongoDB connection error:', err);
+  });
 // Database connection
+/*
 mongoose
   .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
@@ -40,7 +88,7 @@ mongoose
   .catch((err) => {
     console.error("MongoDB connection error:", err);
   });
-
+*/
 // Start server
 server.listen(PORT, () => {
   console.log(`Server is running on ports ${PORT}`);
