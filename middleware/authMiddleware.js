@@ -28,19 +28,25 @@ const authMiddleware = async (req, res, next) => {
   next();
 };
 
-const isAdmin = (req, res, next) => {
-  User.findById(req.userId, (err, user) => {
-    if (err || !user) {
-      return res.status(404).send({ message: "User not found." });
+
+const isAdmin = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.userId);
+
+    if (!user) {
+      return res.status(404).send({ message: 'User not found.' });
     }
 
-    if (user.role !== "admin") {
-      return res.status(403).send({ message: "Require Admin Role!" });
+    if (user.role !== 'admin') {
+      return res.status(403).send({ message: 'Require Admin Role!' });
     }
 
     next();
-  });
+  } catch (err) {
+    next(err);
+  }
 };
+
 
 const verifySocketToken = async (socket, next) => {
   try {
