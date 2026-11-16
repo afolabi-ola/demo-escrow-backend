@@ -1,37 +1,37 @@
 {
-    "name": "escrow-app-backend",
-    "version": "1.0.0",
-    "description": "Backend for escrow service application.",
-    "main": "server.js",
-    "scripts": {
-        "start": "node backend/server.js",
-        "dev": "nodemon backend/server.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "dependencies": {
-        "axios": "^0.21.4",
-        "bcrypt": "^5.1.1",
-        "cloudinary": "^2.6.1",
-        "cookie": "^1.0.2",
-        "cookie-parser": "^1.4.7",
-        "cors": "^2.8.5",
-        "dotenv": "^10.0.0",
-        "express": "^4.17.1",
-        "joi": "^17.13.3",
-        "jsonwebtoken": "^8.5.1",
-        "maildev": "^2.2.1",
-        "mongoose": "^5.10.9",
-        "multer": "^2.0.1",
-        "nodemailer": "^6.10.0",
-        "socket.io": "^4.8.1"
-    },
-    "devDependencies": {
-        "@types/dotenv": "^6.1.1",
-        "nodemon": "^2.0.15"
-    },
-    "engines": {
-        "node": ">=14.0.0"
-    },
-    "author": "Olatunde Sleek",
-    "license": "MIT"
+  "name": "escrow-app-backend",
+  "version": "1.0.0",
+  "description": "Backend for escrow service application.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "axios": "^0.21.4",
+    "bcrypt": "^5.1.1",
+    "cloudinary": "^2.6.1",
+    "cookie": "^1.0.2",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "joi": "^17.13.3",
+    "jsonwebtoken": "^8.5.1",
+    "maildev": "^2.2.1",
+    "mongoose": "^8.24.9",
+    "multer": "^2.0.1",
+    "nodemailer": "^6.10.0",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^6.1.1",
+    "nodemon": "^2.0.15"
+  },
+  "engines": {
+    "node": "22.14.0"
+  },
+  "author": "Olatunde Sleek",
+  "license": "MIT"
 }

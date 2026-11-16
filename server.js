@@ -65,10 +65,7 @@ console.log('Production diagnostics:', {
 });
 
 mongoose
-  .connect(uri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(uri)
   .then(() => {
     console.log('MongoDB connected');
   })
